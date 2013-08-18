@@ -22,8 +22,10 @@
   } else {
     M[A] = D();
   }
-}("Hilo", this, function () {
+}("Helio", this, function () {
 
   "use strict";
 
+  var Helio = {};
+  return Helio;
 }));
