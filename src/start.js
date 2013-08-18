@@ -5,11 +5,11 @@
   /*globals YUI: false, module: false, define: false*/
 
   if (typeof module !== "undefined" && module.exports) {
-    module.exports = D;
+    module.exports = D();
   } else if (typeof define === "function" && define.amd) {
     define(D);
   } else if (typeof YUI === "function") {
-    YUI.add(A, D);
+    YUI.add(A, D());
   } else {
     M[A] = D();
   }
