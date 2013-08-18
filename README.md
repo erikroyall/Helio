@@ -1,7 +1,7 @@
 Helio
 =====
 
-_v0.0.3_
+_v0.0.4_
 
 Provides many new utility functions to solve common tasks
 
