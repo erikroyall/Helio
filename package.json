@@ -22,6 +22,7 @@
       "url": "https://github.com/erikroyall/helio/blob/master/LICENSE-MIT"
     }
   ],
+  "main": "dist/helio.js",
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-jshint": "~0.5.4",
