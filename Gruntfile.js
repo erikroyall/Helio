@@ -70,7 +70,9 @@ module.exports = function(grunt) {
         unused: true,
         boss: true,
         eqnull: true,
-        globals: {}
+        globals: {
+          console: true
+        }
       },
 
       helio: {
