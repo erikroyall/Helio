@@ -25,7 +25,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON("package.json"),
 
     banner: "// ========================= \n" +
-      "// <%= pkg.title %> - <%= pkg.version %>\n" +
+      "// <%= pkg.title %> - v<%= pkg.version %>\n" +
       "// ========================= \n" + 
       "// <%= grunt.template.today(\"yyyy-mm-dd\") %>\n" +
       itsbeen +
