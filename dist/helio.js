@@ -1,5 +1,5 @@
 // ========================= 
-// Helio - 0.0.3
+// Helio - v0.0.3
 // ========================= 
 // 2013-08-19
 // Project started before 1 day 
@@ -49,7 +49,7 @@
    * @param {Any} thiss this object of the called function
    * @return {Void}
    * @example
-   * Hilo.each(["hilo", "wald"], function (e) {
+   * Helio.each(["Helio", "wald"], function (e) {
    *   somevar += e.toUpperCase();
    * });
    * @since 0.0.2
@@ -75,9 +75,9 @@
    * @param {Array} arr Array to act on
    * @param {Function} fn Function to execute on each element of arr
    * @param {Any} thiss this object of the called function
-   * @return {Void}
+   * @return {Array} The results of execution
    * @example
-   * var uppercased = Hilo.map(["hilo", "wald"], function (e) {
+   * var uppercased = Helio.map(["Helio", "wald"], function (e) {
    *   somevar += e.toUpperCase();
    * });
    * @since 0.0.3
@@ -94,6 +94,34 @@
     }
     
     return results;
+  };
+    
+  // --------------------------------------------------
+  // Object Utility functions
+  // --------------------------------------------------
+
+  /**
+   * Extends an Object with properties of another object
+   * 
+   * @for Helio
+   * @method extend
+   * @param {Object} obj Object to extend
+   * @param {Object} ext Extension object
+   * @return {Object} The extended object
+   * @example
+   * Helio.extend(someObject, {name:"Erik"});
+   * @since 0.0.4
+   */
+  Helio.extend = function extend (obj, ext) {
+    var _i;
+
+    for (_i in ext) {
+      if (ext.hasOwnProperty(_i)) {
+        obj[_i] = ext[_i];
+      }
+    }
+
+    return obj;
   };
 
   return Helio;
