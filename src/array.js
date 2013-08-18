@@ -13,7 +13,7 @@
    * @param {Any} thiss this object of the called function
    * @return {Void}
    * @example
-   * Hilo.each(["hilo", "wald"], function (e) {
+   * Helio.each(["Helio", "wald"], function (e) {
    *   somevar += e.toUpperCase();
    * });
    * @since 0.0.2
@@ -39,9 +39,9 @@
    * @param {Array} arr Array to act on
    * @param {Function} fn Function to execute on each element of arr
    * @param {Any} thiss this object of the called function
-   * @return {Void}
+   * @return {Array} The results of execution
    * @example
-   * var uppercased = Hilo.map(["hilo", "wald"], function (e) {
+   * var uppercased = Helio.map(["Helio", "wald"], function (e) {
    *   somevar += e.toUpperCase();
    * });
    * @since 0.0.3
