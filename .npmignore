@@ -1,0 +1,6 @@
+.DS_Store
+.grunt
+.idea
+api
+node_modules
+build/*.min.js
