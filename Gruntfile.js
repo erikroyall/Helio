@@ -42,6 +42,7 @@ module.exports = function(grunt) {
         src: [
           "src/start.js",
           "src/array.js",
+          "src/object.js",
           "src/end.js"
         ],
         dest: "dist/<%= pkg.name %>.js"
