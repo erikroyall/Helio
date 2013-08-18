@@ -4,3 +4,4 @@
 api
 node_modules
 build/*.min.js
+_SpecRunner.html
