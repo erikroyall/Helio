@@ -1,1 +1,1 @@
-module.exports = require("build/helio.js");
+module.exports = require("dist/helio.js");
