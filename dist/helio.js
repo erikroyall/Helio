@@ -1,5 +1,5 @@
 // ========================= 
-// Helio - v0.0.3
+// Helio - v0.0.6
 // ========================= 
 // 2013-08-19
 // Project started before 1 day 
@@ -14,11 +14,11 @@
   /*globals YUI: false, module: false, define: false*/
 
   if (typeof module !== "undefined" && module.exports) {
-    module.exports = D;
+    module.exports = D();
   } else if (typeof define === "function" && define.amd) {
     define(D);
   } else if (typeof YUI === "function") {
-    YUI.add(A, D);
+    YUI.add(A, D());
   } else {
     M[A] = D();
   }
