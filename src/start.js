@@ -17,4 +17,11 @@
 
   "use strict";
 
+  /**
+   * The main Helio object
+   * 
+   * @static
+   * @class Helio
+   * @since 0.0.1
+   */
   var Helio = {};
