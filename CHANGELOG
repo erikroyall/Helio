@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+0.0.6
+0.0.5
+-----
+* Fix errors with Node.js
+
 0.0.4
 -----
 * Add .extend() method
