@@ -4,3 +4,7 @@ CHANGELOG
 0.0.2
 -----
 * Add .each() method
+
+0.0.3
+-----
+* Add .map() method
