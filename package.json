@@ -2,7 +2,7 @@
   "name": "helio",
   "title": "Helio",
   "description": "Provides many new utility functions to solve common tasks",
-  "version": "0.0.1-alpha.0",
+  "version": "0.0.2",
   "homepage": "https://github.com/erikroyall/helio",
   "author": {
     "name": "Erik Royall",
@@ -32,5 +32,8 @@
     "grunt-contrib-jasmine": "~0.4.2",
     "grunt-release": "~0.5.1"
   },
-  "keywords": ["Utility", "JavaScript"]
+  "keywords": [
+    "Utility",
+    "JavaScript"
+  ]
 }
