@@ -77,13 +77,9 @@ module.exports = function(grunt) {
         src: "Gruntfile.js"
       },
 
-      lib_test: {
-        src: ["lib/**/*.js", "test/**/*.js"]
+      helio: {
+        src: ["<%= concat.dist.dest %>"]
       }
-    },
-
-    nodeunit: {
-      files: ["test/**/*_test.js"]
     },
 
     yuidoc: {
@@ -94,7 +90,7 @@ module.exports = function(grunt) {
         url: "<%= pkg.homepage %>",
         options: {
           paths: 'src',
-          outdir: 'api_docs'
+          outdir: 'api'
         }
       }
     }
