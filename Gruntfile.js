@@ -41,6 +41,7 @@ module.exports = function(grunt) {
       dist: {
         src: [
           "src/start.js",
+          "src/array.js",
           "src/end.js"
         ],
         dest: "dist/<%= pkg.name %>.js"
