@@ -73,10 +73,6 @@ module.exports = function(grunt) {
         globals: {}
       },
 
-      gruntfile: {
-        src: "Gruntfile.js"
-      },
-
       helio: {
         src: ["<%= concat.dist.dest %>"]
       }
@@ -93,17 +89,26 @@ module.exports = function(grunt) {
           outdir: 'api'
         }
       }
-    }
+    },
+
+    jasmine: {
+      options: {
+        helpers: "<%= concat.dist.dest %>"
+      },
+      hilo: {
+        src: "test/spec/**/*.spec.js"
+      }
+    },
 
     watch: {
       gruntfile: {
-        files: "<%= jshint.gruntfile.src %>",
-        tasks: ["jshint:gruntfile"]
+        files: ["Gruntfile.js"],
+        tasks: ["concat", "jshint", "jasmine", "uglify", "yuidoc"]
       },
 
-      lib_test: {
-        files: "<%= jshint.lib_test.src %>",
-        tasks: ["jshint:lib_test", "nodeunit"]
+      helio: {
+        files: "<%= jshint.helio.src %>",
+        tasks: ["concat", "jshint", "jasmine", "uglify", "yuidoc"]
       }
     }
   });
@@ -111,12 +116,12 @@ module.exports = function(grunt) {
   // These plugins provide necessary tasks.
   grunt.loadNpmTasks("grunt-contrib-concat");
   grunt.loadNpmTasks("grunt-contrib-uglify");
-  grunt.loadNpmTasks("grunt-contrib-qunit");
+  grunt.loadNpmTasks("grunt-contrib-jasmine");
   grunt.loadNpmTasks("grunt-contrib-jshint");
   grunt.loadNpmTasks("grunt-contrib-yuidoc");
   grunt.loadNpmTasks("grunt-contrib-watch");
+  grunt.loadNpmTasks("grunt-release");
 
   // Default task.
-  grunt.registerTask("default", ["jshint", "nodeunit", "concat", "uglify"]);
-
+  grunt.registerTask("default", ["concat", "jshint", "jasmine", "uglify", "yuidoc", "watch"]);
 };
