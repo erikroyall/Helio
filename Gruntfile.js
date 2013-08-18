@@ -113,6 +113,12 @@ module.exports = function(grunt) {
         files: "<%= jshint.helio.src %>",
         tasks: ["concat", "jshint", "jasmine", "uglify", "yuidoc"]
       }
+    },
+
+    release: {
+      push: false,
+      pushTags: false,
+      npm: false
     }
   });
 
