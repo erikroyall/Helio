@@ -43,6 +43,7 @@ module.exports = function(grunt) {
           "src/start.js",
           "src/array.js",
           "src/object.js",
+          "src/number.js",
           "src/wrapper.js",
           "src/prototype.js",
           "src/end.js"
