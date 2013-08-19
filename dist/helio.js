@@ -14,13 +14,13 @@
   /*globals YUI: false, module: false, define: false*/
 
   if (typeof module !== "undefined" && module.exports) {
-    module.exports = D();
+    module.exports = D.call(M);
   } else if (typeof define === "function" && define.amd) {
     define(D);
   } else if (typeof YUI === "function") {
-    YUI.add(A, D());
+    YUI.add(A, D.call(M));
   } else {
-    M[A] = D();
+    M[A] = D.call(M);
   }
 }("Helio", this, function () {
 
@@ -35,13 +35,13 @@
    */
   var Helio = function Helio (o) {
     if (typeof o === "string") {
-      return HelioString(o);
+      return new HelioString(o);
     } else if (Object.prototype.toString.call(o) === "[object Array]") {
-      return HiloArray(o);
+      return new HelioArray(o);
     } else if (typeof o === "number") {
-      return HiloNumber(o);
+      return new HelioNumber(o);
     } else {
-      return HiloObject(o);
+      return new HelioObject(o);
     }
 
     return false;
@@ -71,12 +71,12 @@
       Array.prototype.forEach.call(arr, fn, thiss);
     }
   : function each (arr, fn, thiss) {
-    var _i, _l;
+      var _i, _l;
 
-    for (_i = 0, _l = arr.length; _i < _l; _l += 1) {
-      fn.call(thiss, arr[_i], arr);
-    }
-  };
+      for (_i = 0, _l = arr.length; _i < _l; _l += 1) {
+        fn.call(thiss, arr[_i], arr);
+      }
+    };
 
   /**
    * Executes a function for each element of an array
@@ -96,17 +96,18 @@
    */
   Helio.map = typeof Array.prototype.map === "function" ?
     function each (arr, fn, thiss) {
-      Array.prototype.map.call(arr, fn, thiss);
+      return Array.prototype.map.call(arr, fn, thiss);
     }
   : function map (arr, fn, thiss) {
-    var _i, _l, results;
+      var _i, _l, results;
 
-    for (_i = 0, _l = arr.length; _i < _l; _l += 1) {
-      results.push(fn.call(thiss, arr[_i], arr));
-    }
-    
-    return results;
-  };
+      for (_i = 0, _l = arr.length; _i < _l; _l += 1) {
+        results.push(fn.call(thiss, arr[_i], arr));
+      }
+      
+      return results;
+    };
+
     
   // --------------------------------------------------
   // Object Utility functions
@@ -135,26 +136,104 @@
 
     return obj;
   };
-    
+  
   // --------------------------------------------------
-  // Hilo Internal Class' wrappers
+  // Number Utility functions
   // --------------------------------------------------
 
-  function HiloObject (obj) {
+  Helio.times = function times (n, fn, thiss, params) {
+    var _i = 0;
+
+    for (; _i < n; _i += 1) {
+      fn.apply(thiss, params);
+    }
+  };
+    
+  // --------------------------------------------------
+  // Helio Internal Class' wrappers
+  // --------------------------------------------------
+
+  function HelioObject (obj) {
     this.o = obj;
   }
 
-  function HiloString (str) {
+  function HelioString (str) {
     this.s = str;
   }
 
-  function HiloArray (arr) {
+  function HelioArray (arr) {
     this.a = arr;
   }
 
-  function HiloNumber (number) {
+  function HelioNumber (number) {
     this.n = number;
   }
+    
+  // --------------------------------------------------
+  // Prototypes of internal objects
+  // --------------------------------------------------
+
+  Helio.extend(HelioObject.prototype, {
+    isArray: false,
+    isString: false,
+    isNumber: false,
+    isBoolean: false,
+    isNaN: false,
+    isObject: true,
+
+    extend: function (ext) {
+      return Helio.extend.call(this, this.o, ext);
+    }
+  });
+
+  Helio.extend(HelioString.prototype, {
+    isArray: false,
+    isString: true,
+    isNumber: false,
+    isBoolean: false,
+    isNaN: false,
+    isObject: false,
+
+    isEmpty: function () {
+      return this.s.length > 0;
+    },
+
+    contains: function (str) {
+      return this.s.indexOf(str) > -1;
+    }
+  });
+
+  Helio.extend(HelioArray.prototype, {
+    isArray: true,
+    isString: false,
+    isNumber: false,
+    isBoolean: false,
+    isNaN: false,
+    isObject: false,
+
+    each: function (fn) {
+      return Helio.each(this.a, fn);
+    },
+
+    map: function (fn) {
+      return Helio.map(this.a, fn);
+    }
+  });
+
+  Helio.extend(HelioNumber.prototype, {
+    isArray: false,
+    isString: false,
+    isNumber: true,
+    isBoolean: false,
+    isNaN: false,
+    isObject: false,
+
+    times: function (fn) {
+      Helio.times(this.n, fn);
+    }
+  });
+
+  this._ = Helio;
 
   return Helio;
 }));
