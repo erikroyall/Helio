@@ -24,4 +24,16 @@
    * @class Helio
    * @since 0.0.1
    */
-  var Helio = {};
+  var Helio = function Helio (o) {
+    if (typeof o === "string") {
+      return HelioString(o);
+    } else if (Object.prototype.toString.call(o) === "[object Array]") {
+      return HelioArray(o);
+    } else if (typeof o === "number") {
+      return HelioNumber(o);
+    } else {
+      return HelioObject(o);
+    }
+
+    return false;
+  };
