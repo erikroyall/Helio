@@ -23,12 +23,12 @@
       Array.prototype.forEach.call(arr, fn, thiss);
     }
   : function each (arr, fn, thiss) {
-    var _i, _l;
+      var _i, _l;
 
-    for (_i = 0, _l = arr.length; _i < _l; _l += 1) {
-      fn.call(thiss, arr[_i], arr);
-    }
-  };
+      for (_i = 0, _l = arr.length; _i < _l; _l += 1) {
+        fn.call(thiss, arr[_i], arr);
+      }
+    };
 
   /**
    * Executes a function for each element of an array
@@ -48,14 +48,51 @@
    */
   Helio.map = typeof Array.prototype.map === "function" ?
     function each (arr, fn, thiss) {
-      Array.prototype.map.call(arr, fn, thiss);
+      return Array.prototype.map.call(arr, fn, thiss);
     }
   : function map (arr, fn, thiss) {
-    var _i, _l, results;
+      var _i, _l, results;
 
-    for (_i = 0, _l = arr.length; _i < _l; _l += 1) {
-      results.push(fn.call(thiss, arr[_i], arr));
+      for (_i = 0, _l = arr.length; _i < _l; _l += 1) {
+        results.push(fn.call(thiss, arr[_i], arr));
+      }
+      
+      return results;
+    };
+
+  Hilo.indexOf = typeof Array.prototype.indexOf === "function" ? 
+    function indexOf (o) {
+      return Array.prototype.map.call(this.o, o);
     }
-    
-    return results;
+  : function indexOf (o) {
+    var n, k, t = Object(this.o)
+      , len = t.length >>> 0;
+
+    if (len === 0) {
+      return -1;
+    }
+
+    n = 0;
+
+    if (arguments.length > 1) {
+      n = Number(arguments[1]);
+      
+      if (n !== n) { // shortcut for verifying if it's NaN
+        n = 0;
+      } else if (n != 0 && n != Infinity && n != -Infinity) {
+        n = (n > 0 || -1) * Math.floor(Math.abs(n));
+      }
+    }
+
+    if (n >= len) {
+      return -1;
+    }
+
+    for (k = n >= 0 ? n : Math.max(len - Math.abs(n), 0); k < len; k++) {
+      if (k in t && t[k] === searchElement) {
+        return k;
+      }
+    }
+
+    return -1;
   };
