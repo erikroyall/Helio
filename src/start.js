@@ -5,13 +5,13 @@
   /*globals YUI: false, module: false, define: false*/
 
   if (typeof module !== "undefined" && module.exports) {
-    module.exports = D();
+    module.exports = D.call(M);
   } else if (typeof define === "function" && define.amd) {
     define(D);
   } else if (typeof YUI === "function") {
-    YUI.add(A, D());
+    YUI.add(A, D.call(M));
   } else {
-    M[A] = D();
+    M[A] = D.call(M);
   }
 }("Helio", this, function () {
 
@@ -26,13 +26,13 @@
    */
   var Helio = function Helio (o) {
     if (typeof o === "string") {
-      return HelioString(o);
+      return new HelioString(o);
     } else if (Object.prototype.toString.call(o) === "[object Array]") {
-      return HelioArray(o);
+      return new HelioArray(o);
     } else if (typeof o === "number") {
-      return HelioNumber(o);
+      return new HelioNumber(o);
     } else {
-      return HelioObject(o);
+      return new HelioObject(o);
     }
 
     return false;
