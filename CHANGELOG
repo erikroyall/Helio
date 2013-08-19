@@ -1,6 +1,14 @@
 CHANGELOG
 =========
 
+0.0.8
+-----
+* Major API Change. Now provides _() wrapper function
+* Add .indexOf() for HelioArray
+* Add .contains() and .isEmpty() for HelioString
+* Add .times() for HiloNumber
+
+0.0.7
 0.0.6
 0.0.5
 -----
