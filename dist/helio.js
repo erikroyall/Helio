@@ -33,7 +33,19 @@
    * @class Helio
    * @since 0.0.1
    */
-  var Helio = {};
+  var Helio = function Helio (o) {
+    if (typeof o === "string") {
+      return HelioString(o);
+    } else if (Object.prototype.toString.call(o) === "[object Array]") {
+      return HiloArray(o);
+    } else if (typeof o === "number") {
+      return HiloNumber(o);
+    } else {
+      return HiloObject(o);
+    }
+
+    return false;
+  };
   
   // --------------------------------------------------
   // Array Utility functions
@@ -123,6 +135,26 @@
 
     return obj;
   };
+    
+  // --------------------------------------------------
+  // Hilo Internal Class' wrappers
+  // --------------------------------------------------
+
+  function HiloObject (obj) {
+    this.o = obj;
+  }
+
+  function HiloString (str) {
+    this.s = str;
+  }
+
+  function HiloArray (arr) {
+    this.a = arr;
+  }
+
+  function HiloNumber (number) {
+    this.n = number;
+  }
 
   return Helio;
 }));
