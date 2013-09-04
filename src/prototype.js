@@ -60,5 +60,15 @@
 
     times: function (fn) {
       Helio.times(this.n, fn);
+    },
+
+    rs: function (str) {
+      var ret = "";
+
+      Helio.times(this.n, function () {
+        ret += str;
+      });
+
+      return ret;
     }
   });
