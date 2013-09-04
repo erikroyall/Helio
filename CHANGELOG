@@ -1,13 +1,10 @@
 CHANGELOG
 =========
 
-0.0.10
-------
-* Add .rs() for HelioNumber
-
 0.0.9
 -----
 * Add .pluck() for HelioArray
+* Add .rs() for HelioNumber
 
 0.0.8
 -----
