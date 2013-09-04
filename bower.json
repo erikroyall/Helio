@@ -1,6 +1,6 @@
 {
   "name": "Helio",
-  "version": "0.0.8",
+  "version": "0.0.10",
   "main": "build/helio.js",
   "ignore": [
     ".DS_Store",

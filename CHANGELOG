@@ -1,12 +1,20 @@
 CHANGELOG
 =========
 
+0.0.10
+------
+* Add .rs() for HelioNumber
+
+0.0.9
+-----
+* Add .pluck() for HelioArray
+
 0.0.8
 -----
 * Major API Change. Now provides _() wrapper function
 * Add .indexOf() for HelioArray
 * Add .contains() and .isEmpty() for HelioString
-* Add .times() for HiloNumber
+* Add .times() for HelioNumber
 
 0.0.7
 0.0.6
