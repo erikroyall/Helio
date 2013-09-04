@@ -102,7 +102,7 @@ module.exports = function(grunt) {
       options: {
         helpers: "<%= concat.dist.dest %>"
       },
-      hilo: {
+      helio: {
         src: "test/spec/**/*.spec.js"
       }
     },
@@ -114,7 +114,7 @@ module.exports = function(grunt) {
       },
 
       helio: {
-        files: "<%= jshint.helio.src %>",
+        files: "<%= concat.dist.dest %>",
         tasks: ["concat", "jshint", "jasmine", "uglify", "yuidoc"]
       }
     },
